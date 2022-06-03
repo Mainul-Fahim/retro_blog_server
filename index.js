@@ -43,24 +43,24 @@ app.get('/blogs', (req, res) => {
       })
 })
 
-app.post('/addAdmin', (req, res) => {
-  const newAdmin = req.body;
-  console.log('new Service', newAdmin);
-  adminCollection.insertOne(newAdmin)
-      .then(result => {
-          console.log('insertedCount', result);
-          res.send(result)
-      })
-})
+// app.post('/addAdmin', (req, res) => {
+//   const newAdmin = req.body;
+//   console.log('new Service', newAdmin);
+//   adminCollection.insertOne(newAdmin)
+//       .then(result => {
+//           console.log('insertedCount', result);
+//           res.send(result)
+//       })
+// })
 
-app.post('/isAdmin', (req, res) => {
-  const email = req.body.email;
-  console.log('new Service', email);
-  adminCollection.find({email:email})
-  .toArray((err,items)=>{
-      res.send(items.length>0)
-    })
-})
+// app.post('/isAdmin', (req, res) => {
+//   const email = req.body.email;
+//   console.log('new Service', email);
+//   adminCollection.find({email:email})
+//   .toArray((err,items)=>{
+//       res.send(items.length>0)
+//     })
+// })
 
 app.get('/blogContent/:id',(req,res) => {
   console.log('id',req.params.id);
@@ -70,14 +70,14 @@ app.get('/blogContent/:id',(req,res) => {
   })
 })
 
-app.delete('/delete/:id',(req,res) => {
-  const id=ObjectId(req.params.id);
-  serviceCollection.findOneAndDelete({_id: id})
-  .then(result => {
-    console.log(result);
-    res.send(result.deletedCount>0)
-  })
-})
+// app.delete('/delete/:id',(req,res) => {
+//   const id=ObjectId(req.params.id);
+//   serviceCollection.findOneAndDelete({_id: id})
+//   .then(result => {
+//     console.log(result);
+//     res.send(result.deletedCount>0)
+//   })
+// })
   //client.close();
 });
 
